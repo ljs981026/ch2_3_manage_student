@@ -13,7 +13,7 @@ public class StudentService {
   }
 
   public void saveStudent(StudentInfoDto studentInfoDto) {
-    Student student = new Student(studentInfoDto.getName(), studentInfoDto.getAge(), studentInfoDto.getAddress());
+    Student student = new Student(studentInfoDto.getName(), studentInfoDto.getAge(), studentInfoDto.getAddress(), true);
     studentRepository.save(student);
   }
 
@@ -23,10 +23,18 @@ public class StudentService {
   }
 
   public void activateStudent(String name) {
-    // TODO: 과제 구현 부분
+    Student student = getStudent(name);
+    if (!student.isActivate()) {
+      Student updateStudent = new Student(student.getName(), student.getAge(), student.getAddress(), true);
+      studentRepository.save(updateStudent);
+    }
   }
 
   public void deactivateStudent(String name) {
-    // TODO: 과제 구현 부분
+    Student student = getStudent(name);
+    if (student.isActivate()) {
+      Student updateStudent = new Student(student.getName(), student.getAge(), student.getAddress(), false);
+      studentRepository.save(updateStudent);
+    }
   }
 }

@@ -7,7 +7,7 @@ public class Student {
   private final String address;
   private boolean activated;
 
-  public Student(String name, int age, String address) {
+  public Student(String name, int age, String address, boolean activated) {
     if (name == null || name.isEmpty()) {
       throw new IllegalArgumentException("이름은 필수 입력값입니다.");
     }
@@ -15,7 +15,7 @@ public class Student {
     this.name = name;
     this.age = age;
     this.address = address;
-    this.activated = true;
+    this.activated = activated;
   }
 
   public String getName() {

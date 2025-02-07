@@ -5,6 +5,7 @@ public class StudentInfoDto {
   private final int age;
   private final String address;
 
+
   public StudentInfoDto(String name, int age, String address) {
     this.name = name;
     this.age = age;
