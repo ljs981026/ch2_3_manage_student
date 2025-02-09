@@ -13,7 +13,7 @@ public class StudentService {
   }
 
   public void saveStudent(StudentInfoDto studentInfoDto) {
-    Student student = new Student(studentInfoDto.getName(), studentInfoDto.getAge(), studentInfoDto.getAddress(), true);
+    Student student = new Student(studentInfoDto.getName(), studentInfoDto.getAge(), studentInfoDto.getAddress());
     studentRepository.save(student);
   }
 
@@ -24,17 +24,23 @@ public class StudentService {
 
   public void activateStudent(String name) {
     Student student = getStudent(name);
-    if (!student.isActivate()) {
-      Student updateStudent = new Student(student.getName(), student.getAge(), student.getAddress(), true);
-      studentRepository.save(updateStudent);
-    }
+//    if (!student.isActivate()) {
+//      Student updateStudent = new Student(student.getName(), student.getAge(), student.getAddress(), true);
+//      studentRepository.save(updateStudent);
+//    }
+    // 수정 코드
+    // activate 메서드로 정확하게 어떤 동작을 하는지 명시
+    student.activate();
   }
 
   public void deactivateStudent(String name) {
     Student student = getStudent(name);
-    if (student.isActivate()) {
-      Student updateStudent = new Student(student.getName(), student.getAge(), student.getAddress(), false);
-      studentRepository.save(updateStudent);
-    }
+//    if (student.isActivate()) {
+//      Student updateStudent = new Student(student.getName(), student.getAge(), student.getAddress(), false);
+//      studentRepository.save(updateStudent);
+//    }
+    // 수정 코드
+    // deactivate 메서드로 정확하게 어떤 동작을 하는지 명시
+    student.deactivate();
   }
 }
